@@ -1,55 +1,101 @@
-<%- include ('header') %> 
+<%- include ('header') %>
 <main class="page">
-    <section class="clean-block features">
-        <div class="container">
-            <div class="block-heading">
-                <h2 class="text-info pulse animated">Book Your Appointments &nbsp;<i class="typcn typcn-edit"></i></h2>
-                <div class="row swing animated padMar">
-                    <div class="col padMar">
-                        <div class="input-group">
-                            <div class="input-group-prepend"></div><input class="form-control autocomplete" type="text" placeholder="search">
-                            <div class="input-group-append"><button class="btn btn-warning" type="button"><i class="fa fa-search"></i></button></div>
-                        </div>
-                    </div>
-                </div>
+  <section class="clean-block features">
+    <div class="container">
+      <div class="block-heading">
+        <h2 class="text-info pulse animated">
+          Book Your Appointments &nbsp;<i class="typcn typcn-edit"></i>
+        </h2>
+        <div class="row swing animated padMar">
+          <div class="col padMar">
+            <div class="input-group">
+              <div class="input-group-prepend"></div>
+              <input
+                class="form-control autocomplete"
+                type="text"
+                placeholder="search"
+              />
+              <div class="input-group-append">
+                <button class="btn btn-warning" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
             </div>
-            <div class="row justify-content-center">
-                <section class="clean-block about-us">
-                    <div class="container">
-                        
-                            <% if (doctor.length > 0) { %>
-                                <div class="row justify-content-center" style="color: rgb(255,255,255);">
-                                <% for( var i = 0; i < doctor.length; i++ ) { %>
-                                        <!-- <div class="row justify-content-center" style="color: rgb(255,255,255);"> -->
-                                        <div class="col-sm-6 col-lg-4" data-aos="zoom-in-up" style="margin-top: 10px;">
-                                            <div class="card clean-card text-center">
-                                                <img class="card-img-top w-100 d-block" src="images/59613224-doctor-avatar-profile-isolated-icon-vector-illustration-graphic-.jpg">
-                                                <div class="card-body info" style="margin-top: 0px;background-color: rgb(23,136,215);color: #ffffff;">
-                                                    <h4 class="card-title"><%= doctor[i].name %></h4>
-                                                    <h4 class="card-title">(<%= doctor[i].special %>)</h4>
-                                                    <p class="text-left card-text"><i class="icon-calendar d-block float-left icon"></i>&nbsp; Mon - Fri</p>
-                                                    <p class="text-left card-text"><i class="icon-clock d-block float-left icon"></i>&nbsp; 9:00am - 6:00pm</p>
-                                                    <p class="text-left card-text">&nbsp;Appointments Available : <%= doctor[i].avail %></p>
-                                                    <div class="icons">
-                                                        <form action="" method="post">
-                                                            <% if (doctor[i].avail > 0) { %>
-                                                              <button type="submit" class="btn btn-outline-primary btn-lg text-light bg-primary border rounded border-white">Book an Appointment</button>
-                                                            <% } else  { %>
-                                                              <button type="submit" class="btn btn-outline-primary btn-lg text-light bg-primary border rounded border-white" disabled>Book an Appointment</button>
-                                                            <% } %>
-                                                        </form>
-                                                        <!-- <button class="btn btn-outline-primary btn-lg text-light bg-primary border rounded border-white" type="button">Book Appointment</button> -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                <% } %>
-                                </div>
-                                <% } %>
-                        </div>
-                        </section>
-                        </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <section class="clean-block about-us">
+          <div class="container">
+            <% if (doctor.length > 0) { %>
+            <div
+              class="row justify-content-center"
+              style="color: rgb(255, 255, 255)"
+            >
+              <% for( var i = 0; i < doctor.length; i++ ) { %>
+              <!-- <div class="row justify-content-center" style="color: rgb(255,255,255);"> -->
+              <div
+                class="col-sm-6 col-lg-4"
+                data-aos="zoom-in-up"
+                style="margin-top: 10px"
+              >
+                <div class="card clean-card text-center">
+                  <img
+                    class="card-img-top w-100 d-block"
+                    src="images/59613224-doctor-avatar-profile-isolated-icon-vector-illustration-graphic-.jpg"
+                  />
+                  <div
+                    class="card-body info"
+                    style="
+                      margin-top: 0px;
+                      background-color: rgb(23, 136, 215);
+                      color: #ffffff;
+                    "
+                  >
+                    <h4 class="card-title"><%= doctor[i].name %></h4>
+                    <h4 class="card-title">(<%= doctor[i].special %>)</h4>
+                    <p class="text-left card-text">
+                      <i class="icon-calendar d-block float-left icon"></i
+                      >&nbsp; Mon - Fri
+                    </p>
+                    <p class="text-left card-text">
+                      <i class="icon-clock d-block float-left icon"></i>&nbsp;
+                      9:00am - 6:00pm
+                    </p>
+                    <p class="text-left card-text">
+                      &nbsp;Appointments Available : <%= doctor[i].avail %>
+                    </p>
+                    <div class="icons">
+                      <form action="" method="post">
+                        <% if (doctor[i].avail > 0) { %>
+                        <button
+                          type="submit"
+                          class="btn btn-outline-primary btn-lg text-light bg-primary border rounded border-white"
+                        >
+                          Book an Appointment
+                        </button>
+                        <% } else { %>
+                        <button
+                          type="submit"
+                          class="btn btn-outline-primary btn-lg text-light bg-primary border rounded border-white"
+                          disabled
+                        >
+                          Book an Appointment
+                        </button>
+                        <% } %>
+                      </form>
+                      <!-- <button class="btn btn-outline-primary btn-lg text-light bg-primary border rounded border-white" type="button">Book Appointment</button> -->
                     </div>
-                </section>
+                  </div>
+                </div>
+              </div>
+              <% } %>
+            </div>
+            <% } %>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
 </main>
-<%- include ('footer') %> 
+<%- include ('footer') %>
