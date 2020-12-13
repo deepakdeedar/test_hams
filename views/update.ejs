@@ -1,0 +1,32 @@
+<%- include ('header') %> 
+<br>
+<br>
+<br>
+<main class="page">
+  <section class="clean-block clean-info dark">
+      <div class="container">
+          <div class="block-heading">
+              <h2 class="text-info">Update Your Appointments&nbsp;</h2>
+              <p>This Pannel lets you update your appointments. You just have to type how much appintments you cane take over this week and will update your profile.&nbsp;</p>
+          </div>
+          <div class="row align-items-center">
+              <div class="col-md-6"><img class="img-thumbnail" src="images/59613224-doctor-avatar-profile-isolated-icon-vector-illustration-graphic-.jpg"></div>
+              <div class="col-md-6">
+                  <h3>Dr. <%= doctor.name %></h3>
+                  <h3>(<%= doctor.special %>)</h3>
+                  <div class="getting-started-info">
+                      <p class="text-left"><i class="icon-calendar d-block float-left icon"></i>&nbsp; Mon - Fri</p>
+                      <p class="text-left"><i class="icon-clock d-block float-left icon"></i>&nbsp; 9:00am - 6:00pm</p>
+                      <p>Appintments total :-&nbsp;<span><%= doctor.avail %></span></p>
+                      <form action="/updateDoctor" method="post">
+                          <input type="number" class="border rounded border-info float-left" name="avail" required>
+                          <input type="email" name="email" value="<%= doctor.email %>" hidden>
+                          <button type="submit" class="btn btn-outline-primary btn-lg float-right" style="margin-top: -13px;margin-right: 192px;">Update</button>
+                      </form>
+                  </div>
+          </div>
+      </div>
+  </section>
+</main>
+
+<%- include('footer') %> 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Features - Brand</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="fonts/typicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="css/smoothproducts.css">
+    <link rel="stylesheet" href="css/untitled.css">
+    <link rel="icon" href="images/favicon.png" type="image/gif" sizes="16x16">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white jello animated clean-navbar" style="width: 1551.6px;height: 100px;margin-top: 0px;">
+        <div class="container"><a class="navbar-brand logo" href="/"><img src="images/logo_transparent.png" class="pulse animated infinite mt-1 rounded" style="width: 138px;height: 120px;margin: -18px;padding: 4px;margin-left: -200px;"></a><button class="navbar-toggler" data-toggle="collapse"
+                data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1" style="width: 820px;margin-left: 0px;margin-right: -141px;">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link <%=home%>" href="/">Home</a></li>
+                    <% if (isdoctor) { %>
+                        <form action="/updateDoctor" method="post">
+                            <input type="text" value="<%=doctor.email%>" name="email" hidden>
+                            <input type="number" value="<%=doctor.avail%>" name="avail" hidden>
+                            <li class="nav-item" role="presentation"><button type="submit" class="nav-link" >Update Appointment</button></li>
+                        </form>
+                    <% } else { %>  
+                        <li class="nav-item" role="presentation"><a class="nav-link <%=book%>" href="/doctor-list">Book Appointment</a></li>
+                    <% } %> 
+                    <li class="nav-item" role="presentation"><a class="nav-link <%=about%>" href="/about">About Us</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link <%=contact%>" href="/contact" >Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>

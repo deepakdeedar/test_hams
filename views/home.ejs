@@ -1,0 +1,135 @@
+<%- include('header') %> 
+    <main class="page landing-page">
+        <section class="rubberBand animated clean-block clean-hero" style="color: rgba(9, 162, 255, 0.75);">
+            <div class="text">
+                <h2 style="font-size: 22px;color: rgb(50,55,58);"><br>"Being on time to appointments and meetings is a phase of self-discipline and an evidence of self-respect. Punctuality is a courteous compliment the intelligent person pays to his associates."&nbsp;<br><br></h2>
+                <p style="margin-top: -48px;color: rgb(50,55,58);"><br>~ Marvin J. Ashton<br><br></p>
+                <% if (logedin) { %>
+                    <h1 style="font-size: 22px;color: rgb(248, 250, 252); font-weight: bold;"><br><%= greet %> </h1>
+                    <form method="GET" action="/doctor-list">
+                        <button class="btn btn-outline-light btn-lg" type="submit" style="margin: 0px;">GET STARTED</button>
+                    </form> 
+                <% } else { %> 
+                    <form method="GET" action="/register">
+                        <button class="btn btn-outline-light btn-lg" type="submit" style="margin: 31px;margin-top: 31px;">REGISTER</button>
+                    </form>
+                    <form method="GET" action="/signin">
+                        <button class="btn btn-outline-light btn-lg" type="submit" style="margin: 0px;">SIGN IN</button>
+                    </form>
+                <% } %> 
+            </div>
+        </section>
+        <section class="clean-block clean-info dark">
+            <div class="container">
+                <div data-aos="slide-up" class="block-heading">
+                    <h2 class="text-info">Corona Virus Update</h2>
+                    <p>For Corona virus updates follow this <a href="https://www.worldometers.info/coronavirus/">Link</a>.</p>
+                </div>
+                <div class="row align-items-center" data-aos="zoom-in-left">
+                    <div class="col-md-6"><img class="img-thumbnail" src="images/59613224-doctor-avatar-profile-isolated-icon-vector-illustration-graphic-.jpg" data-aos="zoom-in-right"></div>
+                    <div class="col-md-6" data-aos="zoom-in-left">
+                        <h3>Dr. Gulathi(Neuro-Surgeon)</h3>
+                        <div class="getting-started-info">
+                            <p>He is a proffesional neurosurgen with work experience over 5 years. Appointment time: 7:00 am - 5:00 pm available on working days.</p>
+                        </div><button class="btn btn-outline-primary btn-lg" type="button">Book Appointment</button></div>
+                </div>
+            </div>
+        </section>
+        <section class="clean-block features">
+            <div class="container" data-aos="slide-up">
+                <div class="block-heading">
+                    <h2 class="text-info">Why chose HAMS over others?&nbsp;</h2>
+                    <p>HAMS (Hospital Appointment Management System ) is made solely for people to easily book appointments in hospitals with respective doctors.</p>
+                </div>
+                <div class="row justify-content-center">
+                    <div data-aos="zoom-in-right" class="col-md-5 feature-box"><i class="icon-star icon"></i>
+                        <h4>Convenient</h4>
+                        <p>It is a Easy to use platform. An abstract view of how to handel appointments.</p>
+                    </div>
+                    <div data-aos="zoom-in-left" class="col-md-5 feature-box"><i class="icon-pencil icon"></i>
+                        <h4>Solved issues</h4>
+                        <p>The issue of getting late appointments has been solved now.</p>
+                    </div>
+                    <div data-aos="zoom-out-right" class="col-md-5 feature-box"><i class="icon-screen-smartphone icon"></i>
+                        <h4>Responsive</h4>
+                        <p>Our company represent a responsive platform for both Doctors and users.</p>
+                    </div>
+                    <div data-aos="zoom-out-left" class="col-md-5 feature-box"><i class="icon-user icon"></i>
+                        <h4>Online Consultants</h4>
+                        <p>We provide online consuling from home to make it easy to guide in situations</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="clean-block slider dark">
+            <div class="container">
+                <div data-aos="fade-down" class="block-heading">
+                    <h2 class="text-info">Precautions for Us</h2>
+                    <p>This Little things can make you healthy.</p>
+                </div>
+                <div class="carousel slide" data-ride="carousel" data-aos="zoom-out-up" id="carousel-1">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active"><img class="w-100 d-block" src="images/home-care-caregivers-square-covid.png" alt="Slide Image" data-bs-hover-animate="pulse"></div>
+                        <div class="carousel-item"><img class="w-100 d-block" src="images/12_ways_poster_2017.jpg" alt="Slide Image" data-bs-hover-animate="shake"></div>
+                        <div class="carousel-item"><img class="w-100 d-block" src="images/10-Common-Chronic-Conditions-Older-Adults-ncoa.png" alt="Slide Image" data-bs-hover-animate="shake"></div>
+                    </div>
+                    <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button"
+                            data-slide="next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-1" data-slide-to="1"></li>
+                        <li data-target="#carousel-1" data-slide-to="2"></li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        <section class="clean-block about-us">
+            <div class="container">
+                <div data-aos="zoom-in-up" class="block-heading">
+                    <h2 class="text-info">About Us</h2>
+                    <p>We at Hams devote our self to provide our clients an easy and comfortable platform. To ensure their satisfaction.</p>
+                </div>
+                <div class="row justify-content-center" data-aos="zoom-in-down" style="margin: 11px;">
+                    <div class="col-sm-6 col-lg-4" data-aos="zoom-in-right">
+                        <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="images/depositphotos_123041468-stock-illustration-avatar-man-cartoon.jpg">
+                            <div class="card-body info">
+                                <h4 class="card-title">Manank Gupta</h4>
+                                <p class="card-text">The UI (front-end) dev at HAMS</p>
+                                <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href="#"><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4" data-aos="zoom-in-left">
+                        <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="images/depositphotos_123041468-stock-illustration-avatar-man-cartoon.jpg">
+                            <div class="card-body info">
+                                <h4 class="card-title">Deepak Deedar Singhla</h4>
+                                <p class="card-text">The Databsae(back-end) dev at Hams</p>
+                                <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href="#"><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center" data-aos="zoom-out-down" style="margin: 11px;">
+                    <div class="col-sm-6 col-lg-4" data-aos="zoom-out-right">
+                        <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="images/depositphotos_123041468-stock-illustration-avatar-man-cartoon.jpg">
+                            <div class="card-body info">
+                                <h4 class="card-title">Shantanu Gulathi</h4>
+                                <p class="card-text">Info gathering and advertising department</p>
+                                <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href="#"><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4" data-aos="zoom-out-left">
+                        <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="images/depositphotos_123041468-stock-illustration-avatar-man-cartoon.jpg">
+                            <div class="card-body info">
+                                <h4 class="card-title">Akarsh Sharma</h4>
+                                <p class="card-text">An analysit and data coordinator</p>
+                                <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href="#"><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+<%- include('footer') %> 

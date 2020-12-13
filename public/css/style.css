@@ -1,0 +1,28 @@
+body {
+    margin: 10px;
+    color: grey;
+}
+
+.main {
+    padding: 50px;
+}
+
+label {
+    color: grey;
+    font-size: small;
+}
+
+.hams {
+    font-size: large;
+    font-weight: 700;
+    color: grey;
+}
+
+.rhere{
+    text-decoration: none;
+    color: lightgreen;
+}
+
+button {
+    cursor: pointer;
+}
