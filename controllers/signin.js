@@ -1,6 +1,6 @@
-const handleSignin = (req, res, db, bcrypt, sgMail) => {
+const handleSignin = (req, res, db, bcrypt) => {
   var d = new Date();
-  sgMail.setApiKey(process.env.API_KEY);
+  //sgMail.setApiKey(process.env.API_KEY);
   const { password, email } = req.body;
   if (!email || !password) {
     return res.status(400).render("signin", {
@@ -25,7 +25,7 @@ const handleSignin = (req, res, db, bcrypt, sgMail) => {
           .then((user) => {
             console.log(user);
             res.render("home", {
-              user: user,
+              user: user[0],
               logedin: true,
               isdoctor: false,
               contact: "",

@@ -32,7 +32,8 @@ const handlePatient = (req, res, db, bcrypt, sgMail) => {
               book: "",
               home: "active",
               greet: "Welcome, " + user[0].name,
-              title: "Home"
+              title: "Home",
+              user: user[0]
             });
             const msg = {
               to: user[0].email, // Change to your recipient

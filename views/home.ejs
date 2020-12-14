@@ -6,7 +6,10 @@
                 <p style="margin-top: -48px;color: rgb(50,55,58);"><br>~ Marvin J. Ashton<br><br></p>
                 <% if (logedin) { %>
                     <h1 style="font-size: 22px;color: rgb(248, 250, 252); font-weight: bold;"><br><%= greet %> </h1>
-                    <form method="GET" action="/doctor-list">
+                    <form method="POST" action="/doctor-list">
+                        <% if (logedin && !isdoctor) { %>
+                            <input type="text" value="<%=user.email%>" name="user" hidden>
+                        <% } %> 
                         <button class="btn btn-outline-light btn-lg" type="submit" style="margin: 0px;">GET STARTED</button>
                     </form> 
                 <% } else { %> 
@@ -32,8 +35,12 @@
                         <div class="getting-started-info">
                             <p>He is a proffesional neurosurgen with work experience over 5 years. Appointment time: 7:00 am - 5:00 pm available on working days.</p>
                         </div>
-                        <form method="GET" action="/doctor-list">
-                            <button class="btn btn-outline-primary btn-lg" type="button">Book Appointment</button>
+                        <form method="POST" action="/doctor-list">
+
+                            <% if (logedin && !isdoctor) { %>
+                                <input type="text" value="<%=user.email%>" name="user" hidden>
+                            <% } %>
+                            <button class="btn btn-outline-primary btn-lg" type="submit">Book Appointment</button>
                         </form>
                         </div>
                 </div>

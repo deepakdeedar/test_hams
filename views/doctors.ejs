@@ -66,8 +66,10 @@
                       &nbsp;Appointments Available : <%= doctor[i].avail %>
                     </p>
                     <div class="icons">
-                      <form action="" method="post">
+                      <form action="/book-appointment" method="post">
                         <% if (doctor[i].avail > 0) { %>
+                          <input type="text" value="<%=user%>" name="user" hidden>
+                          <input type="text" value="<%=doctor[i].email%>" name="doctor" hidden>
                         <button
                           type="submit"
                           class="btn btn-outline-primary btn-lg text-light bg-primary border rounded border-white"

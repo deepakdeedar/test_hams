@@ -10,6 +10,8 @@ const registerDoctor = require("./controllers/registerDoctor");
 const signin = require("./controllers/signin");
 const signinDoctor = require("./controllers/signinDoctor");
 const updateDoctor = require("./controllers/updateDoctor");
+const doctorList = require("./controllers/doctorList");
+const bookAppointment = require("./controllers/bookAppointment");
 
 const db = knex({
   client: "pg",
@@ -36,24 +38,24 @@ app.set("view engine", "ejs");
 var d = new Date();
 
 app.get("/", (req, res) => {
-  res.render("home", {logedin: false, isdoctor: false, contact: "", about: "", book: "", home: "active", title: "Home"});
+  res.render("home", {logedin: false, isdoctor: false, contact: "", about: "", book: "", home: "active", title: "Home", user: ""});
 });
 
 app.get("/register", (req, res) => {
-  res.render("register", { year: d.getFullYear(), error:false, isdoctor: false, contact: "", about: "", book: "", home: "active", title: "Register" });
+  res.render("register", { year: d.getFullYear(), error:false, isdoctor: false, contact: "", about: "", book: "", home: "active", title: "Register", user:'' });
 });
 
 
 app.get("/registerDoctor", (req, res) => {
-  res.render("registerDoctor", { year: d.getFullYear(), error: false, isdoctor: false, contact: "", about: "", book: "", home: "active", title: "Register Doctor" });
+  res.render("registerDoctor", { year: d.getFullYear(), error: false, isdoctor: false, contact: "", about: "", book: "", home: "active", title: "Register Doctor", user:'' });
 });
 
 app.get("/signin", (req, res) => {
-  res.render("signin", { year: d.getFullYear(), error: false, isdoctor: false, contact: "", about: "", book: "", home: "active", title: "Sign In"});
+  res.render("signin", { year: d.getFullYear(), error: false, isdoctor: false, contact: "", about: "", book: "", home: "active", title: "Sign In", user:''});
 });
 
 app.get("/signinDoctor", (req, res) => {
-  res.render("signinDoctor", { year: d.getFullYear(), error: false, isdoctor: false, contact: "", about: "", book: "", home: "active", title: "Sign In"});
+  res.render("signinDoctor", { year: d.getFullYear(), error: false, isdoctor: false, contact: "", about: "", book: "", home: "active", title: "Sign In", user:""});
 });
 
 var doctor;
@@ -63,15 +65,19 @@ db.select('*').from('doctors').then(data => {
 console.log(doctor)
 
 app.get("/doctor-list", (req, res) => {
-  res.render("doctors", {doctor: doctor, isdoctor: false, contact: "", about: "", book: "active", home: "", title: "Doctors List"})
+  res.render("doctors", {doctor: doctor, isdoctor: false, contact: "", about: "", book: "active", home: "", title: "Doctors List", user:""})
 });
 
 app.get("/about", (req, res) => {
-  res.render("about", {logedin: false, isdoctor: false, contact: "", about: "active", book: "", home: "", title: "About"})
+  res.render("about", {logedin: false, isdoctor: false, contact: "", about: "active", book: "", home: "", title: "About", user:""})
 })
 
 app.get("/contact", (req, res) => {
-  res.render("contact", {logedin: false, isdoctor: false, contact: "active", about: "", book: "", home: "", title: "Contact Us"})
+  res.render("contact", {logedin: false, isdoctor: false, contact: "active", about: "", book: "", home: "", title: "Contact Us", user:""})
+})
+
+app.post("/doctor-list", (req, res) => {
+  doctorList.handleDoctorList(req, res, db);
 })
 
 app.post("/signin", (req, res) => {
@@ -92,6 +98,10 @@ app.post("/register-as-doctor", (req, res) => {
 
 app.post("/updateDoctor", (req, res) => {
   updateDoctor.handleUpdateDoctor(req, res, db);
+});
+
+app.post("/book-appointment", (req, res) => {
+  bookAppointment.handleBookAppointment(req, res, db);
 });
 
 app.listen(process.env.PORT || 3000, function () {
