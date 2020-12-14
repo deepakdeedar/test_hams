@@ -33,7 +33,7 @@
                         </form>
                     <% } else { %>  
                         <form method="POST" action="/doctor-list">
-                            <% if (!isdoctor) { %>
+                            <% if (logedin && isPatient) { %>
                                 <input type="text" value="<%=user.email%>" name="user" hidden>
                             <% } %> 
                         <li class="nav-item" role="presentation"><button class="nav-link <%=book%> button-link" href="/doctor-list">Book Appointment</button></li>

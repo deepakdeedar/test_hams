@@ -34,6 +34,7 @@ const handleSignin = (req, res, db, bcrypt) => {
               home: "active",
               greet: "Welcome Back , " + user[0].name,
               title: "Home",
+              isPatient: true
             });
           })
           .catch((err) =>
@@ -41,13 +42,15 @@ const handleSignin = (req, res, db, bcrypt) => {
               year: d.getFullYear(),
               error: true,
               message: "unable to get user",
-              logedin: true,
+              logedin: false,
               isdoctor: false,
               contact: "",
               about: "",
               book: "",
               home: "active",
               title: "Sign In",
+              user: '',
+              isPatient: false
             })
           );
       } else {
@@ -55,13 +58,15 @@ const handleSignin = (req, res, db, bcrypt) => {
           year: d.getFullYear(),
           error: true,
           message: "Wrong Credentials",
-          logedin: true,
+          logedin: false,
           isdoctor: false,
           contact: "",
           about: "",
           book: "",
           home: "active",
           title: "Sign In",
+          user: '',
+          isPatient: false
         });
       }
     })
@@ -70,13 +75,15 @@ const handleSignin = (req, res, db, bcrypt) => {
         year: d.getFullYear(),
         error: true,
         message: "Wrong Credentials",
-        logedin: true,
+        logedin: false,
         isdoctor: false,
         contact: "",
         about: "",
         book: "",
         home: "active",
         title: "Sign In",
+        user: '',
+        isPatient: false
       })
     );
 };

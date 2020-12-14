@@ -12,7 +12,10 @@ const handleDoctorList = (req, res, db) => {
         book: "active",
         home: "",
         title: "Doctors List",
-        user: req.body.user
+        user: req.body.user,
+        error: false,
+        logedin: true,
+        isPatient: false
       });
     });
 };

@@ -1,6 +1,3 @@
-const { compareSync } = require("bcrypt-nodejs");
-const e = require("express");
-
 const handleBookAppointment = (req, res, db) => {
   emailDoctor = req.body.doctor;
   emailUser = req.body.user;
@@ -9,6 +6,7 @@ const handleBookAppointment = (req, res, db) => {
     .from("users")
     .where("email", "=", emailUser)
     .then((data) => {
+        userInfo = data;
       if (data[0].email === "") {
         throw "not found";
       } else {
@@ -17,7 +15,7 @@ const handleBookAppointment = (req, res, db) => {
         .where('email', '=', emailDoctor)
         .decrement('avail', 1)
         .then((data) => {
-            console.log(data)
+            console.log(userInfo)
         })
         .catch(err => {
             console.log(err)
@@ -25,7 +23,24 @@ const handleBookAppointment = (req, res, db) => {
       }
     })
     .catch((err) => {
-      res.json("User Not Found");
+      //res.json("User Not Found");
+      db.select("*")
+    .from("doctors")
+    .then((data) => {
+      res.render("doctors", {
+        doctor: data,
+        isdoctor: false,
+        contact: "",
+        about: "",
+        book: "active",
+        home: "",
+        title: "Doctors List",
+        user: req.body.user,
+        error: true,
+        logedin: false,
+        isPatient: false
+      });
+    });
     });
 };
 

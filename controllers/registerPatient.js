@@ -33,17 +33,18 @@ const handlePatient = (req, res, db, bcrypt, sgMail) => {
               home: "active",
               greet: "Welcome, " + user[0].name,
               title: "Home",
-              user: user[0]
+              user: user[0],
+              isPatient: true
             });
             const msg = {
-              to: user[0].email, // Change to your recipient
+              to: "deedarsingla@gmail.com", // Change to your recipient
               from: "thehams24@gmail.com", // Change to your verified sender
               subject: "Sending with SendGrid is Fun",
               text: "and easy to do anywhere, even with Node.js",
               html:
                 "<h1>Welcome, " +
                 user[0].name +
-                "<br><p>HAMS (Hospital Appointment Management System ) is made solely for people to easily book appointments in hospitals with respective doctors.</p>",
+                "</h1><br><p>HAMS (Hospital Appointment Management System ) is made solely for people to easily book appointments in hospitals with respective doctors.</p><br><img src='https://i.ibb.co/FVHg1f3/logo-transparent.png' alt='logo' border='0'>",
             };
             sgMail
               .send(msg)
@@ -67,7 +68,10 @@ const handlePatient = (req, res, db, bcrypt, sgMail) => {
       book: "",
       home: "active",
       isdoctor: false,
-      title: "Register"
+      title: "Register",
+      logedin: false,
+      user: '',
+      isPatient: false
     })
   );
 };

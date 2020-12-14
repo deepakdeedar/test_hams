@@ -1,5 +1,12 @@
 <%- include ('header') %>
 <main class="page">
+  <% if (error) { %>
+  <div class="alert alert-danger m-5">
+    <center>
+      <strong>Please Sign In or Register to procced.</strong>
+    </center>
+  </div>
+  <% } %>
   <section class="clean-block features">
     <div class="container">
       <div class="block-heading">
@@ -68,8 +75,18 @@
                     <div class="icons">
                       <form action="/book-appointment" method="post">
                         <% if (doctor[i].avail > 0) { %>
-                          <input type="text" value="<%=user%>" name="user" hidden>
-                          <input type="text" value="<%=doctor[i].email%>" name="doctor" hidden>
+                        <input
+                          type="text"
+                          value="<%=user%>"
+                          name="user"
+                          hidden
+                        />
+                        <input
+                          type="text"
+                          value="<%=doctor[i].email%>"
+                          name="doctor"
+                          hidden
+                        />
                         <button
                           type="submit"
                           class="btn btn-outline-primary btn-lg text-light bg-primary border rounded border-white"
@@ -94,8 +111,8 @@
               <% } %>
             </div>
             <% } else { %>
-                <p>No Doctor Found</p>
-                <% } %> 
+            <p>No Doctor Found</p>
+            <% } %>
           </div>
         </section>
       </div>

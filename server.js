@@ -42,20 +42,20 @@ app.get("/", (req, res) => {
 });
 
 app.get("/register", (req, res) => {
-  res.render("register", { year: d.getFullYear(), error:false, isdoctor: false, contact: "", about: "", book: "", home: "active", title: "Register", user:'' });
+  res.render("register", { year: d.getFullYear(), logedin: false, error:false, isdoctor: false, contact: "", about: "", book: "", home: "active", title: "Register", user:'' });
 });
 
 
 app.get("/registerDoctor", (req, res) => {
-  res.render("registerDoctor", { year: d.getFullYear(), error: false, isdoctor: false, contact: "", about: "", book: "", home: "active", title: "Register Doctor", user:'' });
+  res.render("registerDoctor", { year: d.getFullYear(), logedin: false, error: false, isdoctor: false, contact: "", about: "", book: "", home: "active", title: "Register Doctor", user:'' });
 });
 
 app.get("/signin", (req, res) => {
-  res.render("signin", { year: d.getFullYear(), error: false, isdoctor: false, contact: "", about: "", book: "", home: "active", title: "Sign In", user:''});
+  res.render("signin", { year: d.getFullYear(),logedin: false, error: false, isdoctor: false, contact: "", about: "", book: "", home: "active", title: "Sign In", user:''});
 });
 
 app.get("/signinDoctor", (req, res) => {
-  res.render("signinDoctor", { year: d.getFullYear(), error: false, isdoctor: false, contact: "", about: "", book: "", home: "active", title: "Sign In", user:""});
+  res.render("signinDoctor", { year: d.getFullYear(), logedin: false, error: false, isdoctor: false, contact: "", about: "", book: "", home: "active", title: "Sign In", user:""});
 });
 
 var doctor;

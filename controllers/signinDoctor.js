@@ -31,7 +31,8 @@ const handleSigninDoctor = (req, res, db, bcrypt) => {
               book: "",
               home: "active",
               greet: "Welcome Back, Dr. " + user[0].name,
-              title: "Home"
+              title: "Home",
+              isPatient: false
             });
           })
           .catch((err) =>
@@ -44,7 +45,9 @@ const handleSigninDoctor = (req, res, db, bcrypt) => {
               book: "",
               home: "active",
               isdoctor: false,
-              title: "Sign In"
+              title: "Sign In",
+              logedin: false,
+              isPatient: false
             })
           );
       } else {
@@ -57,7 +60,9 @@ const handleSigninDoctor = (req, res, db, bcrypt) => {
           book: "",
           home: "active",
           isdoctor: false,
-          title: "Sign In"
+          title: "Sign In",
+          logedin: false,
+          isPatient: false
         });
       }
     })
@@ -71,7 +76,9 @@ const handleSigninDoctor = (req, res, db, bcrypt) => {
         book: "",
         home: "active",
         isdoctor: false,
-        title: "Sign In"
+        title: "Sign In",
+        logedin: false,
+        isPatient: false
       })
     );
 };

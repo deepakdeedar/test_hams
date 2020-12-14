@@ -32,21 +32,25 @@ const handleDoctor = (req, res, db, bcrypt) => {
               book: "",
               home: "active",
               greet: "Welcome, Dr." + user[0].name,
-              title: "Home"
+              title: "Home",
             });
           });
       })
       .then(trx.commit)
       .catch(trx.rollback);
   }).catch((err) =>
-    res
-      .status(400)
-      .render("registerDoctor", {
-        year: d.getFullYear(),
-        error: true,
-        message: "Unable to register.",
-        contact: "", about: "", book: "", home: "active", isdoctor: false, title: "Register Doctor"
-      })
+    res.status(400).render("registerDoctor", {
+      year: d.getFullYear(),
+      error: true,
+      message: "Unable to register.",
+      contact: "",
+      about: "",
+      book: "",
+      home: "active",
+      isdoctor: false,
+      title: "Register Doctor",
+      logedin: false
+    })
   );
 };
 
