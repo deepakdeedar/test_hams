@@ -2,13 +2,12 @@ const handleSigninDoctor = (req, res, db, bcrypt) => {
   var d = new Date();
   const { password, email } = req.body;
   if (!email || !password) {
-    return res
-      .status(400)
-      .render("signin", {
-        year: d.getFullYear(),
-        error: true,
-        message: "incorrect form submission",
-      });
+    return res.status(400).render("signinDoctor", {
+      year: d.getFullYear(),
+      error: true,
+      message: "incorrect form submission",
+      title: "Sign In"
+    });
   }
   db.select("email", "hash")
     .from("login")
@@ -32,38 +31,48 @@ const handleSigninDoctor = (req, res, db, bcrypt) => {
               book: "",
               home: "active",
               greet: "Welcome Back, Dr. " + user[0].name,
+              title: "Home"
             });
           })
           .catch((err) =>
-            res
-              .status(400)
-              .render("signin", {
-                year: d.getFullYear(),
-                error: true,
-                message: "unable to get user",
-                contact: "", about: "", book: "", home: "active", isdoctor: false
-              })
+            res.status(400).render("signinDoctor", {
+              year: d.getFullYear(),
+              error: true,
+              message: "unable to get user",
+              contact: "",
+              about: "",
+              book: "",
+              home: "active",
+              isdoctor: false,
+              title: "Sign In"
+            })
           );
       } else {
-        res
-          .status(400)
-          .render("signin", {
-            year: d.getFullYear(),
-            error: true,
-            message: "Wrong Credentials",
-            contact: "", about: "", book: "", home: "active", isdoctor: false
-          });
-      }
-    })
-    .catch((err) =>
-      res
-        .status(400)
-        .render("signin", {
+        res.status(400).render("signinDoctor", {
           year: d.getFullYear(),
           error: true,
           message: "Wrong Credentials",
-          contact: "", about: "", book: "", home: "active", isdoctor: false
-        })
+          contact: "",
+          about: "",
+          book: "",
+          home: "active",
+          isdoctor: false,
+          title: "Sign In"
+        });
+      }
+    })
+    .catch((err) =>
+      res.status(400).render("signinDoctor", {
+        year: d.getFullYear(),
+        error: true,
+        message: "Wrong Credentials",
+        contact: "",
+        about: "",
+        book: "",
+        home: "active",
+        isdoctor: false,
+        title: "Sign In"
+      })
     );
 };
 

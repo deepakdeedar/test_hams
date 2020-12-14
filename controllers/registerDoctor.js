@@ -32,6 +32,7 @@ const handleDoctor = (req, res, db, bcrypt) => {
               book: "",
               home: "active",
               greet: "Welcome, Dr." + user[0].name,
+              title: "Home"
             });
           });
       })
@@ -44,7 +45,7 @@ const handleDoctor = (req, res, db, bcrypt) => {
         year: d.getFullYear(),
         error: true,
         message: "Unable to register.",
-        contact: "", about: "", book: "", home: "active", isdoctor: false
+        contact: "", about: "", book: "", home: "active", isdoctor: false, title: "Register Doctor"
       })
   );
 };
