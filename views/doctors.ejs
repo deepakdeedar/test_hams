@@ -13,7 +13,7 @@
         <h2 class="text-info pulse animated">
           Book Your Appointments &nbsp;<i class="typcn typcn-edit"></i>
         </h2>
-        <!-- <div class="row swing animated padMar">
+        <div class="row swing animated padMar">
           <div class="col padMar">
             <div class="input-group">
               <div class="input-group-prepend"></div>
@@ -21,15 +21,18 @@
                 class="form-control autocomplete"
                 type="text"
                 placeholder="search"
+                id="myInput"
+                onkeydown="myFunction()"
+                title="Type in a name"
               />
               <div class="input-group-append">
-                <button class="btn btn-warning" type="button">
+                <button class="btn btn-warning" type="button" onclick="myFunction()">
                   <i class="fa fa-search"></i>
                 </button>
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
       <div class="row justify-content-center">
         <section class="clean-block about-us">
@@ -38,11 +41,12 @@
             <div
               class="row justify-content-center"
               style="color: rgb(255, 255, 255)"
+              id="myUL"
             >
               <% for( var i = 0; i < doctor.length; i++ ) { %>
               <!-- <div class="row justify-content-center" style="color: rgb(255,255,255);"> -->
               <div
-                class="col-sm-6 col-lg-4"
+                class="col-sm-6 col-lg-4 colu1"
                 data-aos="zoom-in-up"
                 style="margin-top: 10px"
               >
@@ -60,7 +64,7 @@
                     "
                   >
                     <h4 class="card-title"><%= doctor[i].name %></h4>
-                    <h4 class="card-title">(<%= doctor[i].special %>)</h4>
+                    <h4 class="card-title c">(<%= doctor[i].special %>)</h4>
                     <p class="text-left card-text">
                       <i class="icon-calendar d-block float-left icon"></i
                       >&nbsp; Mon - Fri
@@ -119,4 +123,22 @@
     </div>
   </section>
 </main>
+<script>
+  function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByClassName("colu1");
+    for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByClassName("c")[0];
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+  }
+</script>
 <%- include ('footer') %>
