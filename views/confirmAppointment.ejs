@@ -1,0 +1,81 @@
+<%- include ('header') %>
+<main class="page">
+  <section class="clean-block about-us">
+    <div class="container">
+      <div class="block-heading">
+        <h2 class="text-info">Book Appointment</h2>
+        <p>
+          <br />Please Verify the details and click the buton below to book the
+          appointment. you will recevie a mail regarding your booking.<br /><br />
+        </p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-sm-6 col-lg-4">
+          <div class="card clean-card text-center">
+            <img
+              class="card-img-top w-100 d-block"
+              src="images/depositphotos_123041468-stock-illustration-avatar-man-cartoon.jpg"
+            />
+            <div class="card-body info">
+              <h4 class="card-title"><%= userInfo.name %></h4>
+              <p class="text-left card-text">
+                <i class="icon-envelope-letter d-block float-left icon"></i
+                >&nbsp; <%= userInfo.email %>
+              </p>
+              <p class="text-left card-text">
+                <i class="icon-phone d-block float-left icon"></i>&nbsp; <%=
+                userInfo.phone %>
+              </p>
+              <p class="text-left card-text">
+                &nbsp;<strong>&nbsp;</strong><br /><strong
+                  >The date and time of your appointment will be scheduled by
+                  doctor and you will recieve a mail with all the details
+                  regarding your appointment</strong
+                >.<br /><br />
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+          <div class="card clean-card text-center">
+            <img
+              class="card-img-top w-100 d-block"
+              src="images/59613224-doctor-avatar-profile-isolated-icon-vector-illustration-graphic-.jpg"
+            />
+            <div class="card-body info">
+              <h4 class="card-title">Dr. <%= doctor.name %></h4>
+              <h4 class="card-title">(<%= doctor.special %>)</h4>
+              <p class="text-left card-text">
+                <i class="icon-calendar d-block float-left icon"></i>&nbsp; Mon
+                - Fri
+              </p>
+              <p class="text-left card-text">
+                <i class="icon-clock d-block float-left icon"></i>&nbsp; 9:00am
+                - 6:00pm
+              </p>
+              <p class="text-left card-text">
+                <i class="icon-phone d-block float-left icon"></i>&nbsp; <%=
+                doctor.phone %>
+              </p>
+            </div>
+            <div class="icons">
+              <form action="/confirm" method="POST">
+                <input type="text" name="docMail" value="<%=doctor.email%>" hidden>
+                <input type="text" name="userMail" value="<%=userInfo.email%>" hidden>
+                <button
+                  class="btn btn-outline-primary btn-lg text-light bg-primary border rounded border-white"
+                  type="submit"
+                >
+                  Confirm Appointment
+                </button>
+              </form>
+            </div>
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%- include ('footer') %>

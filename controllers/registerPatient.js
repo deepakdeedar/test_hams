@@ -37,10 +37,10 @@ const handlePatient = (req, res, db, bcrypt, sgMail) => {
               isPatient: true
             });
             const msg = {
-              to: "deedarsingla@gmail.com", // Change to your recipient
+              to: user[0].email, // Change to your recipient
               from: "thehams24@gmail.com", // Change to your verified sender
-              subject: "Sending with SendGrid is Fun",
-              text: "and easy to do anywhere, even with Node.js",
+              subject: "Welcome to The Hams",
+              text: "welcome mail",
               html:
                 "<h1>Welcome, " +
                 user[0].name +

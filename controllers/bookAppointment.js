@@ -15,7 +15,25 @@ const handleBookAppointment = (req, res, db) => {
         .where('email', '=', emailDoctor)
         .decrement('avail', 1)
         .then((data) => {
-            console.log(userInfo)
+          db.select("*")
+          .from("doctors")
+          .where("email", "=", emailDoctor)
+          .then(doctor => {
+            res.render("confirmAppointment", {
+              doctor: doctor[0],
+              userInfo: userInfo[0],
+              isdoctor: false,
+              contact: "",
+              about: "",
+              book: "active",
+              home: "",
+              title: "Doctors List",
+              user: req.body.user,
+              error: true,
+              logedin: false,
+              isPatient: false
+            });
+          })
         })
         .catch(err => {
             console.log(err)

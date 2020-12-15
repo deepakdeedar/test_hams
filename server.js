@@ -12,16 +12,17 @@ const signinDoctor = require("./controllers/signinDoctor");
 const updateDoctor = require("./controllers/updateDoctor");
 const doctorList = require("./controllers/doctorList");
 const bookAppointment = require("./controllers/bookAppointment");
+const confirm = require("./controllers/confirm");
 
 const db = knex({
   client: "pg",
   connection: {
-    // connectionString: process.env.DATABASE_URL,
-    // ssl: { rejectUnauthorized: false }
-    host: "127.0.0.1",
-    user: "postgres",
-    password: "test",
-    database: "the-hams",
+    connectionString: process.env.DATABASE_URL,
+    ssl: { rejectUnauthorized: false }
+    // host: "127.0.0.1",
+    // user: "postgres",
+    // password: "test",
+    // database: "the-hams",
   },
 });
 
@@ -93,7 +94,7 @@ app.post("/register-as-patient", (req, res) => {
 });
 
 app.post("/register-as-doctor", (req, res) => {
-  registerDoctor.handleDoctor(req, res, db, bcrypt);
+  registerDoctor.handleDoctor(req, res, db, bcrypt, sgMail);
 });
 
 app.post("/updateDoctor", (req, res) => {
@@ -102,6 +103,10 @@ app.post("/updateDoctor", (req, res) => {
 
 app.post("/book-appointment", (req, res) => {
   bookAppointment.handleBookAppointment(req, res, db);
+});
+
+app.post("/confirm", (req, res) => {
+  confirm.handleConfirm(req, res, db, sgMail);
 });
 
 app.listen(process.env.PORT || 3000, function () {
