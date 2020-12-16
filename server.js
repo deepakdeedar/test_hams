@@ -13,16 +13,17 @@ const updateDoctor = require("./controllers/updateDoctor");
 const doctorList = require("./controllers/doctorList");
 const bookAppointment = require("./controllers/bookAppointment");
 const confirm = require("./controllers/confirm");
+const contact = require("./controllers/contact");
 
 const db = knex({
   client: "pg",
   connection: {
-    connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false }
-    // host: "127.0.0.1",
-    // user: "postgres",
-    // password: "test",
-    // database: "the-hams",
+    // connectionString: process.env.DATABASE_URL,
+    // ssl: { rejectUnauthorized: false }
+    host: "127.0.0.1",
+    user: "postgres",
+    password: "test",
+    database: "the-hams",
   },
 });
 
@@ -108,6 +109,14 @@ app.post("/book-appointment", (req, res) => {
 app.post("/confirm", (req, res) => {
   confirm.handleConfirm(req, res, db, sgMail);
 });
+
+app.post("/contact-us", (req, res) => {
+  contact.handleContactUs(req, res, sgMail);
+})
+
+app.get('*', (req, res) => {
+  res.status(404).render('404');
+})
 
 app.listen(process.env.PORT || 3000, function () {
   console.log("Server started at port 3000.");
